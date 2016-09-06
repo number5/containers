@@ -1,0 +1,17 @@
+version: '2'
+
+volumes:
+  old_number5:
+    external: true
+  brucewang.net:
+    external: true
+
+services:
+  nginx:
+    image: "openresty/openresty:1.11.2.1-alpine" 
+    ports:
+      - "8080:80"
+    volumes:
+      - old_number5:/mnt/old_number5
+      - brucewang.net:/mnt/brucewang.net
+    restart: always
