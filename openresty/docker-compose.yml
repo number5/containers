@@ -8,7 +8,7 @@ volumes:
 
 services:
   nginx:
-    image: "openresty/openresty:1.11.2.1-alpine" 
+    image: "openresty/openresty:alpine-fat" 
     ports:
       - "8080:80"
     volumes:
