@@ -1,0 +1,21 @@
+version: '2'
+
+volumes:
+  downloads:
+    external: true
+
+services:
+  nzbget:
+    image: linuxserver/nzbget
+    ports:
+      - "6789:6789"
+    volumes:
+      - /home/bruce/nzbget-config:/config
+      - downloads:/downloads
+    environment:
+      - TZ='Australia/Melbourne'
+      - PUID=1000
+      - PGID=1000
+    network_mode: host
+    restart: always
+
