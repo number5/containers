@@ -1,0 +1,22 @@
+version: '2'
+volumes:
+  downloads:
+    external: true
+
+services:
+  jackett:
+    image: linuxserver/jackett
+    ports:
+      - "9117:9117"
+    volumes:
+      - /home/bruce/jackett-config:/config
+      - downloads:/downloads
+      - /etc/localtime:/etc/localtime:ro
+    ulimits:
+      core: 4096
+    network_mode: host
+    restart: always
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=Australia/Melbourne
